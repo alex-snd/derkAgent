@@ -1,0 +1,5 @@
+chromedata
+__pycache__
+venv
+.idea
+aicrowd.json
