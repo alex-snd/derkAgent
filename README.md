@@ -1,15 +1,13 @@
 # Dr. Derk's Mutant Battlegrounds - Starter Kit
 
-![Dr. Derk's Mutant Battlegrounds](https://i.ibb.co/p2SCH2q/scr.png)
+<p align="center">
+  <a><img src="https://i.ibb.co/p2SCH2q/scr.png"></a>
+</p>
 
 
  - 💪 Challenge Page: https://www.aicrowd.com/challenges/dr-derk-s-mutant-battlegrounds
  - 🗣 Discussion Forum: https://www.aicrowd.com/challengesdr-derk-s-mutant-battlegrounds/discussion
  - 🏆 Leaderboard: https://www.aicrowd.com/challenges/dr-derk-s-mutant-battlegrounds/leaderboards
-
-<p align="center">
-  <a href="https://discord.gg/GTckBMx"><img src="https://img.shields.io/discord/657211973435392011?style=for-the-badge" alt="chat on Discord"></a>
-</p>
 
 This starter kit contains a random agent to help you easily get started with this challenge! Stay tuned for an RL baseline for you to adapt!
 
@@ -19,37 +17,11 @@ This starter kit contains a random agent to help you easily get started with thi
 pip3 install -U gym-derk
 ```
 
-For more information, please refer to the [official documentation](http://docs.gym.derkgame.com/).
+For more information, refer to the [official documentation](http://docs.gym.derkgame.com/).
 
-
-# 🚀 Submission Instructions
-
-To submit to the challenge you'll need to ensure you've set up an appropriate repository structure, create a private git repository at https://gitlab.aicrowd.com with the contents of your submission, and push a git tag corresponding to the version of your repository you'd like to submit.
-
-Detailed instructions can be found [here](https://www.aicrowd.com/challenges/dr-derks-mutant-battlegrounds/submissions/new).
-
-## Repository Structure
-We have created this sample submission repository which you can use as reference.
-
-#### aicrowd.json
-Each repository should have a aicrowd.json file with the following fields:
-
-```
-{
-    "challenge_id" : "evaluations-api-drderk",
-    "grader_id": "evaluations-api-drderk",
-    "authors" : ["aicrowd-user"],
-    "description" : "Dr. Derk Challenge Submission",
-    "license" : "MIT",
-    "gpu": false
-}
-```
-This file is used to identify your submission as a part of the Dr. Derk Challenge.  You must use the `challenge_id` and `grader_id` specified above in the submission. The `gpu` key in the `aicrowd.json` lets your specify if your submission requires a GPU or not. In which case, a NVIDIA-K80 will be made available to your submission when evaluation the submission.
 
 ## Writing your own bot
 You can start with the default bot.py or create your own agent that file. You can also your own script containing DerkPlayer class format present in bot.py.
-
-**NOTE**: Only `bot.py` will be used during evaluation. Other bots can be used by you for running locally.
 
 The functions that are required in the DerkPlayer class are:
 * `__init__`: To initialize your player and will have the parameters `n_agents` and `action_space`
