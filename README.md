@@ -1,20 +1,19 @@
 # Dr. Derk's Mutant Battlegrounds - Starter Kit
 
 <p align="center">
-  <a><img src="https://i.ibb.co/p2SCH2q/scr.png"></a>
+  <a><img src="images/derk.png"></a>
 </p>
 
 
  - 💪 Challenge Page: https://www.aicrowd.com/challenges/dr-derk-s-mutant-battlegrounds
- - 🗣 Discussion Forum: https://www.aicrowd.com/challengesdr-derk-s-mutant-battlegrounds/discussion
  - 🏆 Leaderboard: https://www.aicrowd.com/challenges/dr-derk-s-mutant-battlegrounds/leaderboards
 
-This starter kit contains a random agent to help you easily get started with this challenge! Stay tuned for an RL baseline for you to adapt!
+This starter kit contains an agent trained to play Dr. Derk's Mutant Battlegrounds.
 
 
-# 💻 Installation
-```
-pip3 install -U gym-derk
+## 💻 Installation
+```bash
+pip install -U gym-derk
 ```
 
 For more information, refer to the [official documentation](http://docs.gym.derkgame.com/).
@@ -30,7 +29,11 @@ The functions that are required in the DerkPlayer class are:
 
 Please don't change the definition of these functions. You can add more if you want to.
 
-# Running the Starter Kit
+## Running the Starter Kit
+<p align="center">
+  <a><img src="images/animation.gif" height="350"></a>
+</p>
+
 Run the python script:
 ```bash
 python run.py -n 1
@@ -54,3 +57,7 @@ For example, if you have `bot.py` and `oldbot.py` inside the `agent` directory, 
 ```
 python run.py -p1 bot -p2 oldbot
 ```
+
+## License
+
+[MIT License](LICENSE)
