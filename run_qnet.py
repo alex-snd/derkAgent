@@ -5,8 +5,12 @@ Run a derk game between bots
 import asyncio
 import importlib
 from argparse import ArgumentParser
+from os.path import exists
 
 from gym_derk import DerkSession, DerkAgentServer, DerkAppInstance
+
+import config
+from models.nn import QNet
 
 
 async def run_player(env: DerkSession, DerkPlayerClass):
@@ -14,7 +18,12 @@ async def run_player(env: DerkSession, DerkPlayerClass):
     Runs a DerkPlayer
     """
 
-    player = DerkPlayerClass(env.n_agents, env.action_space)
+    estimator = QNet()
+
+    if exists(config.weights_path) and exists(config.reward_function_path):
+        estimator.load_parameters(config.weights_path, config.reward_function_path)
+
+    player = DerkPlayerClass(env.n_agents, estimator, epsilon=1.0)
 
     obs = await env.reset()
     player.signal_env_reset(obs)
@@ -107,8 +116,8 @@ def parse_arguments():
 if __name__ == "__main__":
     args = parse_arguments()
 
-    player1 = importlib.import_module(f"agent.{args.p1}").DerkPlayer
-    player2 = importlib.import_module(f"agent.{args.p2}").DerkPlayer
+    player1 = importlib.import_module(f"agent.{args.p1}").DerkAgent
+    player2 = importlib.import_module(f"agent.{args.p2}").DerkAgent
 
     asyncio.get_event_loop().run_until_complete(
         main(player1, player2, args.n, args.fast)

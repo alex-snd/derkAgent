@@ -1,5 +1,8 @@
 chromedata
 __pycache__
 venv
+venv__
+_init_environment.py
+weights/history/
 .idea
 aicrowd.json
