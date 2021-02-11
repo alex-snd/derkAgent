@@ -68,14 +68,16 @@ def epoch_games_history_collection(env: DerkEnv, agent: DerkAgent, game_history:
         while not game_history.is_full():
 
             agent.signal_env_reset(env.reset())
-            env_step = env.step()
+            previous_env_state = env.step()
 
             while True:
-                agents_actions = agent.take_action(env_step)
+                agents_actions = agent.take_action(previous_env_state)
 
-                agents_observations, agents_reward, agents_done, _ = env.step(agents_actions)
+                env_state, agents_reward, agents_done, _ = env.step(agents_actions)
 
-                game_history.put(agents_observations, agents_actions, agents_reward, agents_done)
+                game_history.put(previous_env_state, agents_actions, agents_reward, agents_done)
+
+                previous_env_state = env_state
 
                 if all(agents_done):
                     break
