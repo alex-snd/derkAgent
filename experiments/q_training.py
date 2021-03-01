@@ -1,3 +1,5 @@
+import _init_environment
+
 from os import mkdir
 from os.path import exists, join
 
@@ -73,11 +75,11 @@ def epoch_games_history_collection(env: DerkEnv, agent: DerkAgent, game_history:
             while True:
                 agents_actions = agent.take_action(previous_env_state)
 
-                env_state, agents_reward, agents_done, _ = env.step(agents_actions)
+                agents_observations, agents_reward, agents_done, agents_info = env.step(agents_actions)
 
-                game_history.put(previous_env_state, agents_actions, agents_reward, agents_done)
+                game_history.put(previous_env_state[0], agents_actions, agents_reward, agents_done)
 
-                previous_env_state = env_state
+                previous_env_state = (agents_observations, agents_reward, agents_done, agents_info)
 
                 if all(agents_done):
                     break
